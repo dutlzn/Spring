@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [02/Jan/2021:20:52:09 +0800] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [02/Jan/2021:20:52:15 +0800] "GET /wudiSpring/hello HTTP/1.1" 200 181 http-bio-8080-exec-2 610
+0:0:0:0:0:0:0:1 - - [02/Jan/2021:20:52:15 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [02/Jan/2021:20:55:46 +0800] "GET /wudiSpring/hello HTTP/1.1" 200 181 http-bio-8080-exec-1 139
+0:0:0:0:0:0:0:1 - - [02/Jan/2021:21:01:00 +0800] "GET /wudiSpring/hello HTTP/1.1" 200 181 http-bio-8080-exec-1 144
