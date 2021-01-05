@@ -83,3 +83,5 @@
 0:0:0:0:0:0:0:1 - - [05/Jan/2021:16:03:29 +0800] "GET /wudiSpring/frontend/getmainpagein HTTP/1.1" 200 - http-bio-8080-exec-6 1
 0:0:0:0:0:0:0:1 - - [05/Jan/2021:16:03:38 +0800] "GET /wudiSpring/frontend/getmainpageinfo HTTP/1.1" 500 1482 http-bio-8080-exec-8 2
 0:0:0:0:0:0:0:1 - - [05/Jan/2021:16:03:47 +0800] "GET /wudiSpring//superadmin/addheadline HTTP/1.1" 200 - http-bio-8080-exec-7 0
+0:0:0:0:0:0:0:1 - - [05/Jan/2021:16:08:11 +0800] "GET /wudiSpring//superadmin/addheadline HTTP/1.1" 200 - http-bio-8080-exec-1 44
+0:0:0:0:0:0:0:1 - - [05/Jan/2021:16:08:23 +0800] "GET /wudiSpring/frontend/getmainpageinfo HTTP/1.1" 500 1482 http-bio-8080-exec-3 4
