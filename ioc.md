@@ -408,3 +408,125 @@ public class MethodCollector {
     }
 }
 ```
+
+
+
+# 必知必会的注解
+
+## 反射的获取源
+
+用XML来保存类相关的信息以供反射调用
+
+用注解来保存类相关的信息一共反射调用
+
+## 注解
+
+提供一种为程序元素设置元数据的方法
+
+* 元数据是添加到程序元素如方法、字段、类和包上的额外信息
+* 注解是一种分散式的元数据设置方式，XML是集中式的设置方式
+* 注解不能直接干扰程序代码的运行
+
+
+
+反编译 自定义注解
+
+```java
+package com.demo.ann;
+
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.SOURCE)
+public @interface TestAnnotation {
+}
+```
+
+
+
+javac TestAnnotation
+
+javap -verbose TestAnnotation.class
+
+D:\code\Spring\wudiSpring\src\main\java\com\demo\ann>javap -verbose TestAnnotation.class
+Classfile /D:/code/Spring/wudiSpring/src/main/java/com/demo/ann/TestAnnotation.class
+  Last modified 2021-1-5; size 393 bytes
+  MD5 checksum fca8e9572a9f73442429ee0510d01647
+  Compiled from "TestAnnotation.java"
+**public interface com.demo.ann.TestAnnotation extends java.lang.annotation.Annotation**
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT, ACC_ANNOTATION
+Constant pool:
+   #1 = Class              #14            // com/demo/ann/TestAnnotation
+   #2 = Class              #15            // java/lang/Object
+   #3 = Class              #16            // java/lang/annotation/Annotation
+   #4 = Utf8               SourceFile
+   #5 = Utf8               TestAnnotation.java
+   #6 = Utf8               RuntimeVisibleAnnotations
+   #7 = Utf8               Ljava/lang/annotation/Target;
+   #8 = Utf8               value
+   #9 = Utf8               Ljava/lang/annotation/ElementType;
+  #10 = Utf8               METHOD
+  #11 = Utf8               Ljava/lang/annotation/Retention;
+  #12 = Utf8               Ljava/lang/annotation/RetentionPolicy;
+  #13 = Utf8               SOURCE
+  #14 = Utf8               com/demo/ann/TestAnnotation
+  #15 = Utf8               java/lang/Object
+  #16 = Utf8               java/lang/annotation/Annotation
+{
+}
+SourceFile: "TestAnnotation.java"
+RuntimeVisibleAnnotations:
+  0: #7(#8=[e#9.#10])
+  1: #11(#8=e#12.#13)\
+
+
+
+用到了annotation类
+
+
+
+### 注解的功能
+
+作为特定的标记，用于告诉编译器一些信息
+
+编译时动态处理，如动态生成代码
+
+运行时动态处理，作为额外信息的载体，如获取注解信息
+
+
+
+### 注解的分类
+
+标准注解：Override Deprecated SuppressWarnings
+
+元注解： Retention Target Inherited Documented
+
+自定义注解
+
+
+
+元注解：修饰注解的注解、
+
+Target 注解的作用目标
+
+Retention：注解的生命周期
+
+Documented 注解是否应当被包含在JavaDoc文档中
+
+Inherited : 是否允许子类继承该注解
+
+## Target
+
+描述所修饰的注解的使用范围
+
+packages types (类、接口、枚举、Annotation类型)
+
+类型成员（方法、构造方法、成员变量、枚举值）
+
+方法参数和本地变量（如循环变量、catch参数）
