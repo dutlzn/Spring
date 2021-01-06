@@ -60,8 +60,8 @@ public class AnnotationParser {
     }
 
     public static void main(String[] args) throws ClassNotFoundException {
-        parserTypeAnnotation();
+//        parserTypeAnnotation();
         parserFieldAnnotation();
-        parseMethodAnnotation();
+//        parseMethodAnnotation();
     }
 }

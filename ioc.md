@@ -573,3 +573,118 @@ Annotation类型
 //反射获取
 @Retention(RetentionPolicy.RUNTIME)
 ```
+
+
+
+# 注解底层实现
+
+注解获取属性值
+
+JVM会为注解生成代理对象
+
+修改 vm 启动参数
+
+run edit
+
+-Dsun.misc.ProxyGenerator.saveGeneratedFiles=true
+
+https://blog.csdn.net/MrYushiwen/article/details/111473126
+
+-Dsun.misc.ProxyGenerator.saveGeneratedFiles=true -XX:+TraceClassLoading
+
+打印加载类
+
+工作原理：
+
+通过键值对的形式为注解属性赋值
+
+编译器检查注解的使用范围，将注解信息写入元素属性表
+
+运行时候，jvm将RUMTIME的所有注解属性取出都放在了map里面
+
+创建AnnotationInvocationHandler实例并传入前面的map
+
+JVM使用JDK动态代理为注解生成代理类 并初始化处理器
+
+调用invoke方法，通过传入方法名返回注解对应的属性值
+
+# IOC基础
+
+使用注解标记需要工厂管理的实例，并依据注解属性做精细控制
+
+@RequestMapping
+
+## 控制反转 IOC inversion of controller
+
+依托一个类似工厂的IoC容器
+
+将对象的创建、依赖关系的管理以及生命周期交由IoC容器管理
+
+降低系统在实现上的复杂性和耦合度、易于扩展，符合开闭原则
+
+Spring Core最核心的部分
+
+需要先了解依赖注入DI
+
+![](/18.png)
+
+## 上层建筑依赖下层建筑
+
+
+
+![](/19.png)
+
+
+
+## 用依赖注入DI实现控制反转
+
+把底层类作为参数传递给上层类，实现上层对下层的“控制"
+
+![](/20.png)
+
+
+
+![](/21.png)
+
+
+
+## IOC DI DL 的关系
+
+![](/22.png)
+
+
+
+## 依赖注入的方式
+
+setter
+
+interface
+
+constructor
+
+annotation 
+
+
+
+## 依赖倒置原则 ioc di  ioc容器的关系
+
+![](/23.png)
+
+
+
+## IOC容器的优势
+
+避免在各处使用new来创建类，并且可以做到统一维护
+
+创建实例的时候不需要了解其中的细节
+
+反射+工厂模式的合体，满足开闭原则
+
+![](/24.png)
+
+
+
+![](/25.png)
+
+
+
