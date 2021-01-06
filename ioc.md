@@ -531,3 +531,45 @@ packages types (类、接口、枚举、Annotation类型)
 
 方法参数和本地变量（如循环变量、catch参数）
 
+RequestParam--->ElementType.PARAMETER
+
+
+
+@Retention 
+
+标注注解被保留时间的长短
+
+用于定义注解的生命周期
+
+
+
+# 自定义注解
+
+自定义注解 自动继承了Annotation
+
+自定义注解的格式
+
+![](/17.png)
+
+## 注解属性支持的类型
+
+int float boolean byte double char long short
+
+所有基本数据类型
+
+Enum类型
+
+String 类型
+
+Class类型
+
+Annotation类型
+
+以上所有类型的数组
+
+
+
+```
+//反射获取
+@Retention(RetentionPolicy.RUNTIME)
+```
