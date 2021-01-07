@@ -4,12 +4,14 @@ package com.spring.controller.superadmin;
 import com.spring.entity.bo.ShopCategory;
 import com.spring.entity.dto.Result;
 import com.spring.service.solo.ShopCategoryService;
+import org.wudiSpringFramework.core.annotation.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
+@Controller
 public class ShopCategoryOperationController {
     private ShopCategoryService shopCategoryService;
     public Result<Boolean> addShopCategory(HttpServletRequest req, HttpServletResponse resp){

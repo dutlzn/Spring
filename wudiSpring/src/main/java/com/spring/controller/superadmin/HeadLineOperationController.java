@@ -3,11 +3,13 @@ package com.spring.controller.superadmin;
 import com.spring.entity.bo.HeadLine;
 import com.spring.entity.dto.Result;
 import com.spring.service.solo.HeadLineService;
+import org.wudiSpringFramework.core.annotation.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+@Controller
 public class HeadLineOperationController {
     private HeadLineService headLineService;
 
