@@ -30,3 +30,13 @@ OOP下必须得为每个方法都添加通用的逻辑工作，增加维护成�
 
 不同的问题交给不同的部分去解决，每部分专注解决自己的问题
 
+Aspect Oriented Programming就是其中一种关注点分离技术
+
+通用化功能的代码实现即切面Aspect
+
+Aspect之于AOP，就相当于Class之于OOP Bean之于Spring
+
+![](/30.png)
+
+
+
