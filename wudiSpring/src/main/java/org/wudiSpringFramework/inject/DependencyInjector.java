@@ -25,13 +25,14 @@ public class DependencyInjector {
      * 执行Ioc
      */
     public void doIoc(){
+        // 获取Bean容器里面所有的class对象
         if(ValidationUtil.isEmpty(beanContainer.getClasses())){
             log.warn("empty classset in BeanContainer");
             return;
         }
         //1.遍历Bean容器中所有的Class对象
         for(Class<?> clazz : beanContainer.getClasses()){
-            //2.遍历Class对象的所有成员变量
+            //2.遍历Class对象的所有【成员变量】
             Field[] fields = clazz.getDeclaredFields();
             if (ValidationUtil.isEmpty(fields)){
                 continue;
