@@ -660,3 +660,276 @@ public class ValidationUtil {
 
 涉及到容器的增删改查
 
+增加、删除操作
+
+根据Class获取对应实例
+
+获取所有的Class和实例
+
+通过注解来获取被注解标注的Class
+
+通过超类获取对应的子类Class
+
+获取容器载体保存Class的数量
+
+```JAVA
+package org.wudiSpringFramework.core;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.wudiSpringFramework.core.annotation.Component;
+import org.wudiSpringFramework.core.annotation.Controller;
+import org.wudiSpringFramework.core.annotation.Repository;
+import org.wudiSpringFramework.core.annotation.Service;
+import org.wudiSpringFramework.util.ClassUtil;
+import org.wudiSpringFramework.util.ValidationUtil;
+
+import java.lang.annotation.Annotation;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+@Slf4j
+// 私有的构造函数
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class BeanContainer {
+    /**
+     * 存放所有被配置标记的目标对象的Map
+     * Class对象----对应的实例
+     */
+    private final Map<Class<?>, Object> beanMap = new ConcurrentHashMap();
+    /**
+     * 加载bean的注解列表
+     */
+    private static final List<Class<? extends Annotation>> BEAN_ANNOTATION
+            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
+
+
+    /**
+     * 获取Bean容器实例
+     * @return BeanContainer
+     */
+    public static BeanContainer  getInstance() {
+        return ContainerHolder.HOLDER.instance;
+    }
+    public enum ContainerHolder {
+        HOLDER; // 用来存放单例
+        private BeanContainer instance;
+        ContainerHolder() {
+            instance = new BeanContainer();
+        }
+    }
+
+    /**
+     * 容器是否已经加载过bean
+     */
+    private boolean loaded = false;
+
+    /**
+     * 是否已加载过Bean
+     *
+     * @return 是否已加载
+     */
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+
+
+    /**
+     * 扫描加载所有Bean
+     *
+     * @param packageName 包名
+     */
+    public synchronized void loadBeans(String packageName) {
+        // 判断bean容器是否被加载过
+        if(isLoaded()) {
+            log.warn("BeanContainer has been loaded.");
+            return ;
+        }
+        Set<Class<?>> classSet = ClassUtil.extractPackageClass(packageName);
+//        if(classSet == null || classSet.isEmpty()) {
+        if(ValidationUtil.isEmpty(classSet)) {
+            log.warn("extract nothing from packageName:" + packageName);
+            return ;
+        }
+        for (Class<?> clazz : classSet) {
+            for (Class<? extends Annotation> annotation : BEAN_ANNOTATION) {
+                //如果类上面标记了定义的注解
+                if (clazz.isAnnotationPresent(annotation)) {
+                    //将目标类本身作为键，目标类的实例作为值，放入到beanMap中
+                    beanMap.put(clazz, ClassUtil.newInstance(clazz, true));
+                }
+            }
+        }
+
+        loaded = true;
+    }
+
+    /**
+     * Bean实例数量
+     *
+     * @return 数量
+     */
+    public int size() {
+        return beanMap.size();
+    }
+
+
+    /**
+     * 添加一个class对象及其bean实例
+     * @param clazz Class对象
+     * @param bean Bean实例
+     * @return 原有的Bean实例，没有则返回null
+     */
+    public Object addBean(Class<?> clazz, Object bean) {
+        return beanMap.put(clazz, bean);
+    }
+
+    /**
+     * 移除一个IOC容器管理的对象
+     *
+     * @param clazz Class对象
+     * @return 删除的Bean实例, 没有则返回null
+     */
+    public Object removeBean(Class<?> clazz) {
+        return beanMap.remove(clazz);
+    }
+
+    /**
+     * 根据Class对象获取Bean实例
+     * @param clazz Class对象
+     * @return Bean实例
+     */
+    public Object getBean(Class<?> clazz) {
+        return beanMap.get(clazz);
+    }
+
+
+    /**
+     * 获取容器管理的所有实例
+     * @return Class集合
+     */
+    public Set<Class<?>> getClasses() {
+        return beanMap.keySet();
+    }
+
+    /**
+     * 获取容器管理的所有Bean集合（实例）
+     * @return Bean集合
+     */
+    public Set<Object> getBeans() {
+        return new HashSet<>(beanMap.values());
+    }
+
+    /**
+     * 根据注解筛选出Bean的Class集合
+     * @param annotation 注解
+     * @return Class集合
+     */
+    public Set<Class<?>> getClassesByAnnotation(Class<? extends Annotation> annotation){
+        //1.获取beanMap的所有class对象
+        Set<Class<?>> keySet = getClasses();
+        if(ValidationUtil.isEmpty(keySet)){
+            log.warn("nothing in beanMap");
+            return null;
+        }
+        //2.通过注解筛选被注解标记的class对象，并添加到classSet里
+        Set<Class<?>> classSet = new HashSet<>();
+        for(Class<?> clazz : keySet){
+            //类是否有相关的注解标记
+            if(clazz.isAnnotationPresent(annotation)){
+                classSet.add(clazz);
+            }
+        }
+        return classSet.size() > 0? classSet: null;
+    }
+
+    /**
+     * 通过接口或者父类获取实现类或者子类的Class集合，不包括其本身
+     *
+     * @param interfaceOrClass 接口Class或者父类Class
+     * @return Class集合
+     */
+    public Set<Class<?>> getClassesBySuper(Class<?> interfaceOrClass){
+        //1.获取beanMap的所有class对象
+        Set<Class<?>> keySet = getClasses();
+        if(ValidationUtil.isEmpty(keySet)){
+            log.warn("nothing in beanMap");
+            return null;
+        }
+        //2.判断keySet里的元素是否是传入的接口或者类的子类，如果是，就将其添加到classSet里
+        Set<Class<?>> classSet = new HashSet<>();
+        for(Class<?> clazz : keySet){
+            //判断keySet里的元素是否是传入的接口或者类的子类
+            if(interfaceOrClass.isAssignableFrom(clazz) && !clazz.equals(interfaceOrClass)){
+                classSet.add(clazz);
+            }
+        }
+        return classSet.size() > 0? classSet: null;
+    }
+
+
+
+
+
+}
+```
+
+
+
+## 容器管理的Bean实例
+
+都是单例
+
+对于spring来说 也有作用域
+
+Scope(value="singleton")
+
+## Spring框架有多种作用域
+
+singleton
+
+prototype
+
+request
+
+session
+
+globalsession
+
+# 实现容器的依赖注入
+
+目前容器里面管理的bean实例仍然时不完备的
+
+实例里面某些必须的成员变量还没有被创建出来
+
+
+
+定义相关的注解标签
+
+实现创建被注解标记的成员变量实例，并将其注入到成员变量里
+
+依赖注入的使用
+
+```java
+package org.wudiSpringFramework.inject.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Autowired目前仅支持成员变量注入
+ *
+ */
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Autowired {
+    String value() default "";
+}
+```
+
+
+
