@@ -174,5 +174,13 @@ Spring AOP则会使用一组类来作为织入器以完成最终的织入操作
 
 
 
-proxy invocationHandler
+大概流程
+
+为借口创建代理类的字节码文件
+
+使用ClassLoader将字节码文件加载到JVM
+
+创建代理类实例对象，执行对象的目标方法
+
+
 

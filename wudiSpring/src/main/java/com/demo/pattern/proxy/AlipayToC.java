@@ -2,9 +2,11 @@ package com.demo.pattern.proxy;
 
 public class AlipayToC implements ToCPayment{
     ToCPayment toCPayment;
+
     public AlipayToC(ToCPayment toCPayment) {
         this.toCPayment = toCPayment;
     }
+
     @Override
     public void pay() {
         beforePay();
