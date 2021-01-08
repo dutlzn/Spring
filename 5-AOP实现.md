@@ -40,3 +40,139 @@ Aspect之于AOP，就相当于Class之于OOP Bean之于Spring
 
 
 
+
+
+打开spring源代码
+
+spring-demo
+
+```
+plugins {
+    id 'java'
+}
+
+group 'org.springframework'
+version '5.2.0.RELEASE'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(project(":spring-context"))
+    compile(project(":spring-aspects"))
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+```
+
+
+
+ 
+
+# AOP重要术语
+
+切面Aspect： 将横切关注点逻辑进行模块化封装的实体对象
+
+通知Advice：好比是Class里面的方法，还定义了织入逻辑的时机
+
+连接点： JointPoint 允许使用Advice的地方
+
+SpringAOP默认只支持方法级别的JointPoint
+
+切入点： PointCut 定义一系列规则对JointPoint进行筛选
+
+目标对象Target：符合PointCut条件，要被织入横切逻辑的对象
+
+## Advice种类
+
+BeforeAdvice： 在JoinPoint前被执行的Advice
+
+AfterAdvice: 好比try...catch..finally 中的finally
+AfterReturningAdvice: 在JointPoint执行流程正常返回后被执行
+
+ AfterThrowingAdvice: JointPoint执行过程中抛出异常才会触发
+
+AroundAdvice: 在JointPoint前和后都执行，最常用的Advice
+
+## 单个Aspect的执行顺序
+
+![](/31.png)
+
+
+
+## 多个Aspect的执行顺序
+
+![](/32.png)
+
+
+
+所有Aspect的入操作都执行完了 然后xxx
+
+
+
+## Introduction - 引入型 Advice
+
+为目标类引入新接口，而不需要目标类做任何实现
+
+使得目标类在使用的过程中转型成新街口对象，调用新街口的方法
+
+
+
+
+
+AOP需要oop理解自己的语义，所以并不像单独使用这么灵活
+
+织入： 将Aspect模块化的横切关注点集成到OOP里
+
+织入器： 完成织入过程的执行者，如ajc 
+
+Spring AOP则会使用一组类来作为织入器以完成最终的织入操作
+
+
+
+# Spring AOP的实现原理
+
+## 代理模式
+
+![](/33.png)
+
+
+
+具体代码见wudiSpring demo pattern 
+
+ 
+
+# Spring AOP的实现
+
+在加载器阶段主要完成几件事情：
+
+通过带有包名的类来获取对应class文件的二进制字节流
+
+根据读取的字节流，将代表的静态存储结构转化为运行时数据结构
+
+在内存中生成一个代表该类的Class对象，作为方法区该类的数据访问入口
+
+
+
+## 改进的切入点
+
+根据一定规则去改动或者生成新的字节流，将切面逻辑织入其中
+
+行之有效的方案就是取代被代理类的动态代理机制
+
+根据接口或者目标类，计算出代理类的字节码并加载到jvm中
+
+ 
+
+
+
+## SpringAOP 之JDK动态代理 
+
+* 程序运行时动态生成类的字节码 ，并加载到JVM中
+* 要求被代理的类，必须实现接口
+* 并不要求代理对象去实现接口，所以可以复用代理对象的逻辑
+
+
+
+proxy invocationHandler
+
