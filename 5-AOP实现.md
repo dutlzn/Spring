@@ -166,7 +166,7 @@ Spring AOP则会使用一组类来作为织入器以完成最终的织入操作
 
 
 
-## SpringAOP 之JDK动态代理 
+# SpringAOP 之JDK动态代理 
 
 * 程序运行时动态生成类的字节码 ，并加载到JVM中
 * 要求被代理的类，必须实现接口
@@ -181,6 +181,92 @@ Spring AOP则会使用一组类来作为织入器以完成最终的织入操作
 使用ClassLoader将字节码文件加载到JVM
 
 创建代理类实例对象，执行对象的目标方法
+
+
+
+代理对象：增强后的对象
+
+目标对象：被增强的对象
+
+https://zhuanlan.zhihu.com/p/60219913
+
+https://www.cnblogs.com/yeyang/p/10087293.html
+
+问题：
+
+\1. 这个代理对象是由谁且怎么生成的？
+
+Proxy getProxyClass0()
+
+\2. invoke方法是怎么调用的？
+
+\3. invoke和add方法有什么对应关系？
+
+\4. 生成的代理对象是什么样子的
+
+
+
+# Spring AOP之CLIGB动态代理
+
+
+
+代码生成库：Code Generation Library
+
+不要求被代理类实现接口
+
+内部主要封装了ASM Java字节码操控框架
+
+动态生成子类以覆盖非final的方法，绑定钩子回调自定义拦截器
+
+重要的类
+
+```
+MethodInterceptor
+```
+
+```
+public class Enhancer extends AbstractClassGenerator
+```
+
+
+
+## 实现机制
+
+JDK动态代理： 基于反射机制实现，要求业务类必须实现接口
+
+优势：JDK原生，在jvm里运行较为可靠
+
+平滑支持jdk版本的升级
+
+CGLIB：基于ASM机制实现，生成业务类的子类作为代理类
+
+优势：被代理对象无需实现接口，能实现代理类的无侵入
+
+
+
+**Spring AOP底层机制**
+
+CGLIB+JDK动态代理 共存
+
+默认策略：Bean实现了接口则用JDK ，否则使用CGLIB
+
+
+
+# WudiSpring Aop实现
+
+
+
+AOP1.0
+
+使用CGLIB来实现，不需要业务类实现接口，相对灵活
+
+定义与横切逻辑相关的注解
+
+定义供外部使用的横切逻辑骨架
+
+## 实现Aspect横切逻辑以及被代理方法的定序执行
+
+
 
 
 

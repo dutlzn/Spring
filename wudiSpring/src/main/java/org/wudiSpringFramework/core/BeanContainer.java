@@ -14,6 +14,9 @@ import java.lang.annotation.Annotation;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Bean容器实现
+ */
 @Slf4j
 // 私有的构造函数
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
