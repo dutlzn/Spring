@@ -86,6 +86,7 @@ public class BeanContainer {
                 //如果类上面标记了定义的注解
                 if (clazz.isAnnotationPresent(annotation)) {
                     //将目标类本身作为键，目标类的实例作为值，放入到beanMap中
+                    log.info("class :" + clazz + " has been loaded");
                     beanMap.put(clazz, ClassUtil.newInstance(clazz, true));
                 }
             }

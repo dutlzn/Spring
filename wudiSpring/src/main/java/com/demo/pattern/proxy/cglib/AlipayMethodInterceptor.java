@@ -2,7 +2,7 @@ package com.demo.pattern.proxy.cglib;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import sun.dc.pr.PRError;
+
 
 import java.lang.reflect.Method;
 
