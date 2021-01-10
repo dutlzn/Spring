@@ -286,3 +286,30 @@ Aspect只支持对被某个标签标记的类进行横切逻辑的织入
 
 需要AspectJ的帮助
 
+
+
+## 
+
+
+
+## Spring AOP的发展史
+
+Spring AOP1.0完全是Spring自己研发的
+
+使用起来不方便，需要实现各种各样的接口，并继承指定的类
+
+
+
+
+
+
+
+# 复习（必看）
+
+这块比前面IOC难很多
+
+uml
+
+https://www.pianshen.com/article/40021538722/
+
+https://astah-community.software.informer.com/
