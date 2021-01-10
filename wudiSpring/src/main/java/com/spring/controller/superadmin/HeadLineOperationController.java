@@ -4,6 +4,7 @@ import com.spring.entity.bo.HeadLine;
 import com.spring.entity.dto.Result;
 import com.spring.service.solo.HeadLineService;
 import org.wudiSpringFramework.core.annotation.Controller;
+import org.wudiSpringFramework.inject.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Controller
 public class HeadLineOperationController {
+    @Autowired(value = "HeadLineServiceImpl")
     private HeadLineService headLineService;
 
     public Result<Boolean> addHeadLine(HttpServletRequest req, HttpServletResponse resp){

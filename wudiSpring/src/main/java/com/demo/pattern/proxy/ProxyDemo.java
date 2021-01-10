@@ -36,6 +36,7 @@ public class ProxyDemo {
         CommonPayment commonPayment = new CommonPayment();
 //        AlipayInvocationHandler alipayInvocationHandler = new AlipayInvocationHandler(commonPayment);
 //        CommonPayment commonPaymentProxy = JdkDynamicProxyUtil.newProxyInstance(commonPayment, alipayInvocationHandler);
+        // 方法拦截器
         MethodInterceptor methodInterceptor = new AlipayMethodInterceptor();
         CommonPayment commonPaymentProxy = CglibUtil.creteProxy(commonPayment, methodInterceptor);
         commonPaymentProxy.pay();
