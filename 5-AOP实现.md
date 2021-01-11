@@ -298,13 +298,80 @@ Spring AOP1.0完全是Spring自己研发的
 
 使用起来不方便，需要实现各种各样的接口，并继承指定的类
 
+Spring AOP2.0继承了AspectJ，复用AspectJ的语法树
+
+
+
+## AspectJ
+
+提供了完整的AOP解决方案，是AOP的java实现版本
+
+定义了切面语法以及切面语法的解析机制
+
+提供了强大的织入工具
+
+ ![](/34.png)
+
+**所以AspectJ是AOP的一套完整的解决方案**
 
 
 
 
 
+```
+/** Class, interface (including annotation type), or enum declaration */
+TYPE,
 
-# 复习（必看）
+/** Field declaration (includes enum constants) */
+FIELD,
+
+/** Method declaration */
+METHOD,
+```
+
+
+
+
+
+AspectJ官网：
+
+http://www.eclipse.org/aspectj/
+
+AspectJ框架的织入时机：静态织入和LTW
+
+编译时织入： 利用ajc，将切面逻辑织入到类里生成class文件
+
+编译后织入：利用ajc，修改javac编译出来的class文件
+
+类加载期织入：利用java agent ，在类加载的时候织入切面逻辑
+
+对于Spring AOP2.0，仅仅用到了AspectJ的切面语法，并没有用到ajc编译工具
+
+避免增加用户的学习成本
+
+只是默认不适用，如果还想使用ajc还是可以使用的
+
+织入机制沿用自己的CGLIB和jdk动态代理机制
+
+
+
+## 改造
+
+
+
+改造框架：
+
+让Pointcut更加灵活
+
+只需要引入AspectJ的切面表达式和相关的定位解析机制
+
+PointcutParser
+
+PointcutExpression
+
+
+
+# 复习
 
 这块比前面IOC难很多
 
@@ -313,3 +380,30 @@ uml
 https://www.pianshen.com/article/40021538722/
 
 https://astah-community.software.informer.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
