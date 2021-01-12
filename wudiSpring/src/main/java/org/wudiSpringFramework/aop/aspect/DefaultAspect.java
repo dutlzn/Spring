@@ -2,6 +2,10 @@ package org.wudiSpringFramework.aop.aspect;
 
 import java.lang.reflect.Method;
 
+
+/**
+ * 定义供外部使用的横切逻辑骨架
+ */
 public abstract class DefaultAspect {
     /**
      * 事前拦截

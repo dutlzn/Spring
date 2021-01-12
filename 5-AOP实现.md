@@ -383,13 +383,47 @@ https://astah-community.software.informer.com/
 
 
 
+## Cglib动态代理实例
+
+Cglib
+
+**AlipayMethodInterceptor(MethodInterceptor):**
+
+@Override 
+
+intercept(Object obj, Method method, Object[] args, MethodProxy proxy):
+
+```
+beforePay();
+Object result = proxy.invokeSuper(obj, args);
+afterPay();
+return result;
+```
+
+**CglibUtil**
+
+createProxy(T targetObject, MethodIntercept methodIntercept) :
+
+```
+(T)Enhancer.create(targetObject.getClass(), methodInterceptor);
+```
 
 
 
+```java
+// Cglib动态代理
+CommonPayment commonPayment = new CommonPayment();
+// AlipayInvocationHandler alipayInvocationHandler = new AlipayInvocationHandler(commonPayment);
+// CommonPayment commonPaymentProxy = JdkDynamicProxyUtil.newProxyInstance(commonPayment, alipayInvocationHandler);
+// 方法拦截器
+MethodInterceptor methodInterceptor = new AlipayMethodInterceptor();
+CommonPayment commonPaymentProxy = CglibUtil.creteProxy(commonPayment, methodInterceptor);
+commonPaymentProxy.pay();
 
-
-
-
+ToCPayment toCPayment = new ToCPaymentImpl();
+ToCPayment proxy = CglibUtil.creteProxy(toCPayment, methodInterceptor);
+proxy.pay();
+```
 
 
 

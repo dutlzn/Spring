@@ -32,17 +32,26 @@ public class ProxyDemo {
 //       toBProxy.pay();
 
 
-//        Cglib动态代理
+////        Cglib动态代理
+//        CommonPayment commonPayment = new CommonPayment();
+////        AlipayInvocationHandler alipayInvocationHandler = new AlipayInvocationHandler(commonPayment);
+////        CommonPayment commonPaymentProxy = JdkDynamicProxyUtil.newProxyInstance(commonPayment, alipayInvocationHandler);
+//        // 方法拦截器
+//        MethodInterceptor methodInterceptor = new AlipayMethodInterceptor();
+//        CommonPayment commonPaymentProxy = CglibUtil.creteProxy(commonPayment, methodInterceptor);
+//        commonPaymentProxy.pay();
+
+//        ToCPayment toCPayment = new ToCPaymentImpl();
+//        ToCPayment proxy = CglibUtil.creteProxy(toCPayment, methodInterceptor);
+//        proxy.pay();
+
         CommonPayment commonPayment = new CommonPayment();
-//        AlipayInvocationHandler alipayInvocationHandler = new AlipayInvocationHandler(commonPayment);
-//        CommonPayment commonPaymentProxy = JdkDynamicProxyUtil.newProxyInstance(commonPayment, alipayInvocationHandler);
-        // 方法拦截器
-        MethodInterceptor methodInterceptor = new AlipayMethodInterceptor();
-        CommonPayment commonPaymentProxy = CglibUtil.creteProxy(commonPayment, methodInterceptor);
+        AlipayMethodInterceptor alipayMethodInterceptor = new AlipayMethodInterceptor();
+        CommonPayment commonPaymentProxy = CglibUtil.creteProxy(commonPayment, alipayMethodInterceptor);
         commonPaymentProxy.pay();
 
-        ToCPayment toCPayment = new ToCPaymentImpl();
-        ToCPayment proxy = CglibUtil.creteProxy(toCPayment, methodInterceptor);
-        proxy.pay();
+//        ToCPayment toCPayment = new ToCPaymentImpl();
+//        ToCPayment proxy = CglibUtil.creteProxy(toCPayment, new AlipayMethodInterceptor());
+//        proxy.pay();
     }
 }

@@ -12,11 +12,15 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 往被代理的对象里，添加横切逻辑
+ *  创建MethodInterceptor 的实现类
+ *  定义必要的成员变量， 被代理的类以及Aspect列表
+ *  按照Order对Aspect进行排序
+ *  实现对横切逻辑以及被代理对象方法的定序执行
  */
 public class AspectListExecutor implements MethodInterceptor {
     // 被代理的类
     private Class<?> targetClass;
+    // 排序好的Aspect列表
     @Getter
     private List<AspectInfo> sortedAspectInfoList;
 
@@ -34,12 +38,22 @@ public class AspectListExecutor implements MethodInterceptor {
         Collections.sort(aspectInfoList, new Comparator<AspectInfo>() {
             @Override
             public int compare(AspectInfo o1, AspectInfo o2) {
+                // 按照order从小到大进行升序排序
                 return o1.getOrderIndex() - o2.getOrderIndex();
             }
         });
         return aspectInfoList;
     }
 
+    /**
+     *
+     * @param proxy 被代理的类
+     * @param method 被代理的方法
+     * @param args 参数
+     * @param methodProxy
+     * @return
+     * @throws Throwable
+     */
     @Override
     public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         Object returnValue = null;
