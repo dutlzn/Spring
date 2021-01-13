@@ -1,7 +1,6 @@
 com\spring\entity\dto\MainPageInfoDto.class
 com\spring\controller\superadmin\ShopCategoryOperationController.class
 com\spring\service\solo\impl\ShopCategoryServiceImpl.class
-com\spring\controller\DispatcherServlet.class
 com\spring\controller\frontend\MainPageController.class
 com\spring\service\combine\HeadLineShopCategoryCombineService.class
 com\spring\service\combine\impl\HeadLineShopCategoryCombineServiceImpl.class

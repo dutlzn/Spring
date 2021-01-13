@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 
-// 拦截所有请求
+// 拦截所有请求 https://blog.csdn.net/qq_43040688/article/details/108521981
 @Slf4j
 @WebServlet("/*") // 真正拦截所有的请求
 public class DispatcherServlet extends HttpServlet {
@@ -33,8 +33,8 @@ public class DispatcherServlet extends HttpServlet {
         new DependencyInjector().doIoc();
         // 2 初始化请求处理器责任链
         PROCESSOR.add(new PreRequestProcessor());
-        PROCESSOR.add(new StaticResourceRequestProcessor());
-        PROCESSOR.add(new JspRequestProcessor());
+        PROCESSOR.add(new StaticResourceRequestProcessor(getServletContext()));
+        PROCESSOR.add(new JspRequestProcessor(getServletContext()));
         PROCESSOR.add(new ControllerRequestProcessor());
     }
     @Override

@@ -1,6 +1,4 @@
 package org.wudiSpringFramework.mvc;
-
-import com.sun.deploy.net.HttpResponse;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.wudiSpringFramework.mvc.processor.RequestProcessor;
@@ -47,6 +45,7 @@ public class RequestProcessorChain {
 
     /**
      * 以责任链的模式执行请求链
+     * 采用责任链模式，如果没有被当前处理器处理，则交给下一个处理器处理，直到有处理器处理成功
      */
     public void doRequestProcessorChain() {
         // 1 通过迭代器遍历注册的请求处理器实现类列表
