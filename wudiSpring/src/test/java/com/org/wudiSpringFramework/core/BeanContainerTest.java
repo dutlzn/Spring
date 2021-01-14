@@ -1,12 +1,12 @@
 package com.org.wudiSpringFramework.core;
 
-import com.spring.controller.DispatcherServlet;
 import com.spring.controller.frontend.MainPageController;
 import com.spring.service.solo.HeadLineService;
 import com.spring.service.solo.impl.HeadLineServiceImpl;
 import org.junit.jupiter.api.*;
 import org.wudiSpringFramework.core.BeanContainer;
 import org.wudiSpringFramework.core.annotation.Controller;
+import org.wudiSpringFramework.mvc.DispatcherServlet;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BeanContainerTest {

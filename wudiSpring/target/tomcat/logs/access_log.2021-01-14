@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [14/Jan/2021:09:51:34 +0800] "GET /wudiSpring/templates/test.jsp HTTP/1.1" 200 575 http-bio-8080-exec-1 663
+0:0:0:0:0:0:0:1 - - [14/Jan/2021:09:51:34 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [14/Jan/2021:20:21:22 +0800] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
+127.0.0.1 - - [14/Jan/2021:20:22:10 +0800] "GET /wudiSpring/headline/remove HTTP/1.1" 500 3523 http-bio-8080-exec-1 238
+127.0.0.1 - - [14/Jan/2021:20:22:10 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-2 0
+127.0.0.1 - - [14/Jan/2021:20:22:15 +0800] "GET /wudiSpring/headline/remove HTTP/1.1" 500 3523 http-bio-8080-exec-4 6
+127.0.0.1 - - [14/Jan/2021:20:22:18 +0800] "GET /wudiSpring/headline/remove HTTP/1.1" 500 3523 http-bio-8080-exec-3 3
