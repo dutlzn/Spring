@@ -25,7 +25,7 @@ public class HeadLineOperationController {
 
 
     @RequestMapping(value="/remove", method= RequestMethod.GET)
-    public void removeHeadLine(HttpServletRequest req, HttpServletResponse resp) {
+    public void removeHeadLine() {
         System.out.println("删除headline");
     }
 //    public Result<Boolean> removeHeadLine(HttpServletRequest req, HttpServletResponse resp){
