@@ -40,5 +40,6 @@ public abstract class DefaultAspect {
      * @throws Throwable
      */
     public void afterThrowing(Class<?> targetClass, Method method, Object[] args, Throwable e) throws Throwable {
+        throw new RuntimeException(e);
     }
 }

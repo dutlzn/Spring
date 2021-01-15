@@ -14,11 +14,10 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ControllerMethod {
-    // Controller对应的Class对象
+    //Controller对应的Class对象
     private Class<?> controllerClass;
-    // 执行的controller实例
+    //执行的Controller方法实例
     private Method invokeMethod;
-    // 方法参数名称以及独赢的参数类型
+    //方法参数名称以及对应的参数类型
     private Map<String, Class<?>> methodParameters;
-
 }

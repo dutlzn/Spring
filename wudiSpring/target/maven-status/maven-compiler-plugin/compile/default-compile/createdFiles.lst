@@ -2,6 +2,7 @@ com\spring\entity\dto\MainPageInfoDto.class
 com\spring\controller\superadmin\ShopCategoryOperationController.class
 org\wudiSpringFramework\mvc\type\RequestPathInfo.class
 com\spring\service\solo\impl\ShopCategoryServiceImpl.class
+com\spring\aspect\ControllerTimeCalculatorAspect.class
 com\spring\controller\frontend\MainPageController.class
 com\spring\service\combine\HeadLineShopCategoryCombineService.class
 org\wudiSpringFramework\util\ConverterUtil.class

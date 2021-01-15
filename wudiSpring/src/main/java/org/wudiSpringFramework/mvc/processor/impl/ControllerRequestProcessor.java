@@ -202,17 +202,20 @@ public class ControllerRequestProcessor implements RequestProcessor {
         Object result;
         try {
             if (methodParam.size() == 0) {
+                // TODO：如果发生异常应该抛出
                 result = invokeMethod.invoke(controller);
             } else {
                 result = invokeMethod.invoke(controller, methodParam.toArray());
             }
-        } catch (IllegalAccessException e) {
+        }
+        catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {
             //如果是调用异常的话，需要通过e.getTargetException()
             // 去获取执行方法抛出的异常
             throw new RuntimeException(e.getTargetException());
         }
+
         return result;
     }
 }

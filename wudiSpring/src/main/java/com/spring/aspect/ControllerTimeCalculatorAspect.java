@@ -29,4 +29,11 @@ public class ControllerTimeCalculatorAspect extends DefaultAspect {
                 targetClass.getName(), method.getName(), args, returnValue, costTime);
         return returnValue;
     }
+
+    @Override
+    public void afterThrowing(Class<?> targetClass, Method method, Object[] args, Throwable e) throws Throwable {
+        log.info("AOP处理异常，执行的类【{}】，执行的方法是【{}】，参数是【{}】，异常信息【{}】",
+                targetClass, method, args, e.getMessage());
+        super.afterThrowing(targetClass, method, args, e);
+    }
 }

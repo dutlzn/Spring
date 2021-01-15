@@ -39,6 +39,9 @@ public class DispatcherServlet extends HttpServlet {
     }
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
+        log.info("request path is: {}", req.getServletPath());
+        log.info("request method is: {}", req.getMethod());
+
         // 1 创建责任链对象实例
         RequestProcessorChain requestProcessorChain = new RequestProcessorChain(PROCESSOR.iterator(), req, resp);
         // 2 通过责任链模式来依次调用请求处理器对请求进行处理
