@@ -6,6 +6,9 @@ import com.spring.service.solo.HeadLineService;
 import org.wudiSpringFramework.core.annotation.Controller;
 import org.wudiSpringFramework.inject.annotation.Autowired;
 import org.wudiSpringFramework.mvc.annotation.RequestMapping;
+import org.wudiSpringFramework.mvc.annotation.RequestParam;
+import org.wudiSpringFramework.mvc.annotation.ResponseBody;
+import org.wudiSpringFramework.mvc.type.ModelAndView;
 import org.wudiSpringFramework.mvc.type.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +21,24 @@ public class HeadLineOperationController {
     @Autowired(value = "HeadLineServiceImpl")
     private HeadLineService headLineService;
 
-    public Result<Boolean> addHeadLine(HttpServletRequest req, HttpServletResponse resp){
+    @RequestMapping(value = "/add", method =RequestMethod.POST)
+    public ModelAndView addHeadLine(
+            @RequestParam("lineName") String lineName,
+            @RequestParam("lineLink") String lineLink,
+            @RequestParam("lineImg") String lineImg,
+            @RequestParam("priority") Integer priority
+    ){
         //TODO:参数校验以及请求参数转化
-        return headLineService.addHeadLine(new HeadLine());
+        HeadLine headLine = new HeadLine();
+        headLine.setLineName(lineName);
+        headLine.setLineLink(lineLink);
+        headLine.setLineImg(lineImg);
+        headLine.setPriority(priority);
+        Result<Boolean> result = headLineService.addHeadLine(headLine);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setView("addtest.jsp").addViewData("result", result);
+        return modelAndView;
+//        return headLineService.addHeadLine(new HeadLine());
     };
 
 
@@ -40,7 +58,10 @@ public class HeadLineOperationController {
         //TODO:参数校验以及请求参数转化
         return headLineService.queryHeadLineById(1);
     }
-    public Result<List<HeadLine>>queryHeadLine(HttpServletRequest req, HttpServletResponse resp){
+
+    @RequestMapping(value = "/query", method = RequestMethod.GET)
+    @ResponseBody
+    public Result<List<HeadLine>>queryHeadLine(){
         //TODO:参数校验以及请求参数转化
         return headLineService.queryHeadLine(null, 1, 100);
     }

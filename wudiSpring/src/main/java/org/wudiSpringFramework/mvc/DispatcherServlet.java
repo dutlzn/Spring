@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 
-// 拦截所有请求 https://blog.csdn.net/qq_43040688/article/details/108521981
+// 拦截所有请求
 @Slf4j
 @WebServlet("/*") // 真正拦截所有的请求
 public class DispatcherServlet extends HttpServlet {
