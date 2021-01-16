@@ -5,13 +5,13 @@
     </head>
     <body>
         <table>
-            <h2 style="color:red">表单提交:</h2>
+            <h2 style="color:red">JSP表单</h2>
             <br>
-            <form id="info" method="post" action="/wudiSpring/headline/add">
-            头条说明:<input type="text" name="lineName"><br>
-            头条链接:<input type="text" name="lineLink"> <br>
-            头条图片地址:<input type="text" name="lineImg"> <br>
-            优先级:<input  type="test" name="priority"><br>
+            <form id="headlineTest" method="POST" action="/wudiSpring/headline/add">
+            头条说明:<input type="text" name="lineName" value="123"><br>
+            头条链接:<input type="text" name="lineLink" value="123"> <br>
+            头条图片地址:<input type="text" name="lineImg" value="123"> <br>
+            优先级:<input type="text" name="priority" value="123"><br>
             结果: <h3>状态码：${result.code}
             信息: ${result.msg} </h3>
             <br>

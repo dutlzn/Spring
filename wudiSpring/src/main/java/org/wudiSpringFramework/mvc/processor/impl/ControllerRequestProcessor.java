@@ -85,7 +85,7 @@ public class ControllerRequestProcessor implements RequestProcessor {
                     //3.解析方法里被@RequestParam标记的参数，
                     // 获取该注解的属性值，作为参数名，
                     // 获取被标记的参数的数据类型，建立参数名和参数类型的映射
-                    Map<String, Class<?>> methodParams = new HashMap<>();
+                    Map<String, Class<?>> methodParamMap  = new LinkedHashMap<>(10);
                     //获取方法的参数
                     Parameter[] parameters = method.getParameters();
                     if (!ValidationUtil.isEmpty(parameters)) {
@@ -96,7 +96,7 @@ public class ControllerRequestProcessor implements RequestProcessor {
                             if (requestParam == null) {//如果方法参数没有注解，则暂时报错
                                 throw new RuntimeException("The parameter must have @RequestParam");
                             }
-                            methodParams.put(requestParam.value(), parameter.getType());
+                            methodParamMap.put(requestParam.value(),parameter.getType());
                         }
                     }
                     //4.将获取到的信息封装成RequestPathInfo实例和ControllerMethod实例，放置到映射表里
@@ -107,7 +107,7 @@ public class ControllerRequestProcessor implements RequestProcessor {
                         log.warn("duplicate url:{} registration，current class {} method{} will override the former one",
                                 requestPathInfo.getHttpPath(), requestMappingClass.getName(), method.getName());
                     }
-                    ControllerMethod controllerMethod = new ControllerMethod(requestMappingClass, method, methodParams);
+                    ControllerMethod controllerMethod = new ControllerMethod(requestMappingClass, method, methodParamMap);
                     this.pathControllerMethodMap.put(requestPathInfo, controllerMethod);
                 }
             }
@@ -171,10 +171,15 @@ public class ControllerRequestProcessor implements RequestProcessor {
     private Object invokeControllerMethod(ControllerMethod controllerMethod, HttpServletRequest request) {
         //1.从请求里获取GET或者POST的参数名及其对应的值
         Map<String, String> requestParamMap = new HashMap<>();
+        /**
+         *  request.getParameterMap()
+         *  返回值记录了所有提交请求中的请求参数和请求参数值的映射关系
+         *  只读
+         */
         //GET，POST方法的请求参数获取方式
         Map<String, String[]> parameterMap = request.getParameterMap();
         for (Map.Entry<String, String[]> parameter : parameterMap.entrySet()) {
-            if (ValidationUtil.isEmpty(parameter.getValue())) {
+            if (!ValidationUtil.isEmpty(parameter.getValue())) {
                 //只支持一个参数对应一个值的形式
                 requestParamMap.put(parameter.getKey(), parameter.getValue()[0]);
             }

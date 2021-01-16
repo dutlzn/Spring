@@ -39,8 +39,9 @@ public class DispatcherServlet extends HttpServlet {
     }
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
-        log.info("request path is: {}", req.getServletPath());
-        log.info("request method is: {}", req.getMethod());
+
+        // 打印日志 显示请求路径和日志
+
 
         // 1 创建责任链对象实例
         RequestProcessorChain requestProcessorChain = new RequestProcessorChain(PROCESSOR.iterator(), req, resp);
