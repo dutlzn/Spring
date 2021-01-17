@@ -53,3 +53,5 @@
 0:0:0:0:0:0:0:1 - - [16/Jan/2021:16:19:26 +0800] "POST /wudiSpring/headline/add HTTP/1.1" 404 1109 http-bio-8080-exec-1 254
 0:0:0:0:0:0:0:1 - - [16/Jan/2021:16:23:56 +0800] "POST /wudiSpring/headline/add HTTP/1.1" 200 770 http-bio-8080-exec-3 588
 127.0.0.1 - - [16/Jan/2021:18:17:38 +0800] "GET /wudiSpring/templates/addtest.jsp HTTP/1.1" 200 758 http-bio-8080-exec-1 26237
+0:0:0:0:0:0:0:1 - - [16/Jan/2021:18:20:30 +0800] "GET /wudiSpring/templates/addtest.jsp HTTP/1.1" 200 758 http-bio-8080-exec-1 215
+0:0:0:0:0:0:0:1 - - [16/Jan/2021:18:20:34 +0800] "POST /wudiSpring/headline/add HTTP/1.1" 200 770 http-bio-8080-exec-3 32
