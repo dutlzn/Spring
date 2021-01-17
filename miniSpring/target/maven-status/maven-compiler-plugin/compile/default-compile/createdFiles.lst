@@ -1,0 +1,10 @@
+com\project\entity\Result.class
+com\project\service\UserService.class
+com\framework\core\annotation\Component.class
+com\framework\core\annotation\Service.class
+com\project\entity\User.class
+com\framework\util\ClassUtil.class
+com\framework\core\annotation\Repository.class
+com\project\service\impl\UserServiceImpl.class
+com\project\TestServlet.class
+com\framework\core\annotation\Controller.class

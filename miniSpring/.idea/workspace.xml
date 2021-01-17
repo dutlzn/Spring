@@ -23,16 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="737ad2b9-0042-4d6c-a98c-cb4e39ad9fa1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniSpring.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/framework/core/annotation/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/util/ClassUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/framework/util/ClassUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/framework/util/ValidatorUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wudiSpring/target/tomcat/logs/access_log.2021-01-16" beforeDir="false" afterPath="$PROJECT_DIR$/../wudiSpring/target/tomcat/logs/access_log.2021-01-16" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +34,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -81,6 +74,55 @@
       <recent name="com.framework.core.annotation" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.ClassUtil">
+    <configuration name="ClassUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.framework.util.ClassUtil" />
+      <module name="miniSpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.framework.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="miniSpring [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="tomcat7:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Maven.miniSpring [tomcat7:run]" />
+      <item itemvalue="Application.ClassUtil" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClassUtil" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -105,9 +147,73 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2365" y="203" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610852997602">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state x="2365" y="203" key="#com.intellij.execution.impl.EditConfigurationsDialog/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610852997602" />
+    <state x="2716" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1610852951109">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state x="2716" y="253" key="#com.intellij.ide.util.MemberChooser/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610852951109" />
+    <state x="2166" y="326" width="1093" height="596" key="#xdebugger.evaluate" timestamp="1610854939681">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state x="2166" y="326" width="1093" height="596" key="#xdebugger.evaluate/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610854939681" />
+    <state width="1815" height="364" key="GridCell.Tab.0.bottom" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.0.bottom/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.0.center" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.0.center/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.0.left" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.0.left/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.0.right" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.0.right/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.1.bottom" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.bottom/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.1.center" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.center/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.1.left" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.left/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
+    <state width="1815" height="364" key="GridCell.Tab.1.right" timestamp="1610869086161">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state width="1815" height="364" key="GridCell.Tab.1.right/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610869086161" />
     <state x="2391" y="122" key="SettingsEditor" timestamp="1610792962864">
       <screen x="1982" y="8" width="1858" height="1080" />
     </state>
     <state x="2391" y="122" key="SettingsEditor/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610792962864" />
+    <state x="2567" y="254" key="run.anything.popup" timestamp="1610856817932">
+      <screen x="1982" y="8" width="1858" height="1080" />
+    </state>
+    <state x="2567" y="254" key="run.anything.popup/93.0.1827.1080/1982.8.1858.1080@1982.8.1858.1080" timestamp="1610856817932" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/framework/util/ClassUtil.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/framework/util/ClassUtil.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
